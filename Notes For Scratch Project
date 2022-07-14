@@ -1,0 +1,203 @@
+07/12/2022
+
+
+                      Scratch Project Notes
+
+Idea for the project:
+
+Sports game?
+--> slapshot game, basketball game, baseball
+
+Star Wars?
+--> Trench Run, Jedi Training, Rescue mission
+
+Running game?
+--> simmilar to Temple Run
+	--> Spacebar = jump, down = duck, left and right
+
+Shooting game
+--> aim with the mouse, click to shoot
+	--> targets, skeet, monsters?
+
+Minigolf
+--> click and hold? Drag?
+
+================
+Adventure Games:
+================
+
+Harry Potter
+Star Wars
+Futurama
+
+Avatar: The Last Airbender <--
+
+
+
+											AVATAR: THE LAST AIRBENDER
+											==========================
+
+--> give a name
+--> pick an element/nation
+
+--> "welcome to the {} nation"
+--> "Practice bending" --> arrow key combos (ddr/guitar hero style?)
+			* could do a bending practice and/or a dodging practice
+			* Loop the practice until they succeed
+
+--> destroy some cabages? ;)
+--> save the day (different for each nation)
+		* Different tasks of the same mission?
+--> end the simulation
+
+
+Air: Aang - Steering Aapa/Glider - Avoid fireballs
+Water: Kataara - Sneaking past fire guards - Avoid guards
+
+Earth: Toph - Fighting Earth Benders - GH Style
+Fire: Zuko - Agni Kai with Zhao - GH Style
+
+							-------------------
+											AIR
+							-------------------
+
+--> Aang
+--> Play airbending ball
+		* Air hockey style
+		* Pong?
+
+
+							Final Level:
+--> Escape the fire nation
+		--> Avoid fire balls
+			--> Ride glider/skybison
+					* fly through rings with sky bison or glider
+
+							-------------------
+											WATER
+							-------------------
+--> Kataara
+
+--> Rotate a shield around our character to block incoming
+		attacks
+		* Think of BrainGames -> planetary defender game
+
+							Final Level:
+--> Sneak past guards to rescue Aang?
+
+							-------------------
+											EARTH
+							-------------------
+--> Toph
+--> Fight your way through the Earth Bending Cup
+		* Guitar Hero style - Set combos, set speed, increased difficulties
+		* 5 rounds?
+
+									No Final Level
+
+
+							-------------------
+											FIRE
+							-------------------
+--> Zuko
+--> Redirect lightning
+		* mouse tracing game
+			* set boundaries, if mouse pointer hits, restart
+				Think of it like operation
+
+										Final Level
+
+--> Agni Kai vs Zhao
+		* Guitar Hero style - Set combos, set speed
+
+
+
+						======================
+							Programming Notes
+						======================
+
+
+								Functions List:
+								---------------
+
+Greeting() --> Ask for name and nation/element
+
+****
+AIR
+****
+
+Score() --> keep track of airball score
+						* first to 7 wins
+
+CompMove() --> move the computer player
+Move() --> let us move our player
+* Can only move left or right
+* Can't phase through boundaries or objects -> limit by position
+
+bounce() --> bounce the "puck" off walls
+
+Be careful in the corners! Going to need a way to avoid pinching
+
+Final:
+Fireball() --> need a fireball motion
+* Could do from the bottom and top of screen, from no more than
+	halfway across (x<=0) and shoot in angles
+	* if top: -45< x <= -30
+	* if bottom: 45 < x <= 30
+Hit() --> if a fireball hits, we restart
+	* if no fireball hits after 90 seconds, we succeed
+Move() --> up and down with arrows as inputs?
+
+
+******
+WATER
+******
+
+ShieldMove() --> Left/right arrow to rotate, if object hits shield,
+								 it will be reflected back
+
+Final:
+MazeBoundary() --> Don't allow things outside of boundaries
+FireGuards() --> move guards in certain patterns
+* Might need 2-3 different versions of this function for
+	different movements -> different guard sprites?
+
+Goal object: goal at each maze -> if reached, move on.
+
+*****
+FIRE
+*****
+
+MouseTrace() --> Track mouse and boundaries
+								 If mouse hits boundary, restart
+
+Could make each level timed as well...
+
+
+
+*********************
+EARTH and FIRE FINALS
+*********************
+
+GuitarHero() --> if the arrow mathces the holder and the input, we return
+								 scores for how close it is to perfectly fitting.
+								 5 points - perfect
+								 3 points - great
+								 2 points - good
+								 1 point - poor
+								 -1 point - miss
+
+								 arrow object will have to be scored based on position
+								 "if input: check which object is closest to input section
+								 	if input and symbol match: check distance, give score
+								 	if input and symbol don't match: miss score"
+
+Earth Sequences and Fire Sequence must be stored somewhere
+
+Earth Sequences - 5 different sequences
+
+Sequences can be scored based off timer: under the hood, the timing of
+inputs can be how things are scored and the overlay above can match that
+timing.
+
+Must achieve a certain score to succeed
